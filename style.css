@@ -1,0 +1,93 @@
+:root {
+  --bg: #f4ecd8;
+  --text: #4e342e;
+  --accent: #8d6e63;
+  --btn-bg: #4e342e;
+  --btn-text: #f4ecd8;
+  --font: 'Gochi Hand', cursive;
+}
+
+body.dark-theme {
+  --bg: #2d1b15;
+  --text: #d7ccc8;
+  --accent: #a1887f;
+  --btn-bg: #d7ccc8;
+  --btn-text: #2d1b15;
+}
+
+body {
+  width: 320px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  padding: 20px;
+  margin: 0;
+  transition: 0.3s;
+}
+
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+
+/* The actual sliding toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--accent);
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--text); }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* Input and Buttons */
+.input-group { display: flex; gap: 8px; margin-bottom: 15px; }
+input[type="text"] {
+  flex: 1; padding: 10px; border: 1.5px solid var(--text);
+  border-radius: 12px; background: transparent; color: var(--text);
+  font-family: var(--font); font-size: 1.1rem; outline: none;
+}
+
+button#addBtn {
+  background: var(--btn-bg); color: var(--btn-text);
+  border: none; padding: 0 15px; border-radius: 12px;
+  cursor: pointer; font-family: var(--font);
+}
+
+/* Tasks */
+ul { list-style: none; padding: 0; margin-bottom: 20px; }
+li {
+  display: flex; justify-content: space-between; padding: 8px 0;
+  border-bottom: 1px solid rgba(141, 110, 99, 0.2);
+}
+.task-text { flex: 1; cursor: pointer; }
+.task-text.completed { text-decoration: line-through; opacity: 0.5; }
+.delete-btn { background: none; border: none; color: #e57373; cursor: pointer; font-size: 1.2rem; }
+
+/* Footer Buttons */
+.footer-btns { display: flex; gap: 10px; }
+#downloadBtn, #clearBtn {
+  flex: 1; background: transparent; color: var(--text);
+  border: 1px solid var(--text); border-radius: 12px;
+  padding: 8px; cursor: pointer; font-family: var(--font); font-size: 0.9rem;
+}
+#downloadBtn:hover { background: rgba(0,0,0,0.05); }
